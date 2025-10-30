@@ -1,8 +1,74 @@
 import { useEffect, useState } from 'react';
 import BlogList from './components/BlogList';
+import { BlogForm } from './components/BlogForm';
+import type { BlogPost, BlogPostInput } from "./types/BlogPost";
+
 
 function App() {
   const [showForm, setShowForm] = useState(false);
+   const initialPosts: BlogPost[] = [
+    {
+      id: 1,
+      title: "Getting Started with React",
+      content:
+        "React is a powerful JavaScript library for building user interfaces. In this post, we will explore the basics of React and how to get started with your first component.",
+      author: "John Doe",
+      publishDate: "2024-01-15",
+      category: "Technology",
+    },
+    {
+      id: 2,
+      title: "Understanding TypeScript",
+      content:
+        "TypeScript adds static typing to JavaScript, making it easier to catch errors early and improve code quality. Learn about types, interfaces, and more.",
+      author: "Jane Smith",
+      publishDate: "2024-02-20",
+      category: "Programming",
+    },
+    {
+      id: 3,
+      title: "The Art of Writing Clean Code",
+      content:
+        "Clean code is essential for maintainability. This article discusses principles and practices for writing code that is easy to read and understand.",
+      author: "Bob Johnson",
+      publishDate: "2024-03-10",
+      category: "Best Practices",
+    },
+    {
+      id: 4,
+      title: "Modern CSS Techniques",
+      content:
+        "CSS has evolved significantly. Explore modern techniques like Grid, Flexbox, and CSS Variables that make styling easier and more powerful.",
+      author: "Alice Brown",
+      publishDate: "2024-04-05",
+      category: "Design",
+    },
+    {
+      id: 5,
+      title: "State Management in React",
+      content:
+        "Managing state effectively is crucial in React applications. Compare different approaches including Context API, Redux, and Zustand.",
+      author: "John Doe",
+      publishDate: "2024-05-12",
+      category: "Technology",
+    },
+  ];
+ const [posts, setPosts] = useState<BlogPost[]>(initialPosts);
+
+ const handleAddPost=(post: BlogPostInput)=> {
+  const newPost= {
+    id: posts.length + 1,
+  publishDate: new Date(),
+    author:post.author,
+    title: post.title,
+    content: post.content,
+    category: post.category
+
+
+
+  }
+  setPosts([newPost, ...posts])
+ }
 
 
  
@@ -31,8 +97,9 @@ function App() {
             </button>
           </div>
 
-        
-        <BlogList />
+              {showForm && <BlogForm onCancel={() => setShowForm(false)} handleAddPost={handleAddPost} onSuccess={() => setShowForm(false)}/>}
+
+        <BlogList posts={posts} />
       </main>
 
       <footer className="bg-white border-t border-gray-200 mt-12">

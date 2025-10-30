@@ -1,9 +1,9 @@
 export interface BlogPost {
-  id: string;
+  id: number;
   title: string;
   content: string;
   author: string;
-  publishDate: string;
+  publishDate: string | Date;
   category: string;
 }
 
