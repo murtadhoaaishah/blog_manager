@@ -1,26 +1,12 @@
-import { useState } from 'react';
 import type { BlogPost as BlogPostType } from '../types/BlogPost';
 
 interface BlogPostProps {
   post: BlogPostType;
-  onEdit: (post: BlogPostType) => void;
 }
 
-export const BlogPostCard = ({ post, onEdit }: BlogPostProps) => {
+export const BlogPostCard = ({ post }: BlogPostProps) => {
 
-    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const handleDelete = async () => {
-    setIsDeleting(true);
-    try {
-      setShowDeleteConfirm(false);
-    } catch (error) {
-      console.error('Failed to delete:', error);
-    } finally {
-      setIsDeleting(false);
-    }
-  };
+   
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -32,7 +18,7 @@ export const BlogPostCard = ({ post, onEdit }: BlogPostProps) => {
   };
 
   return (
-    <article className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+    <article className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow mb-4">
       <div className="flex justify-between items-start mb-3">
         <div className="flex-1">
           <h3 className="text-2xl font-bold text-gray-900 mb-2">{post.title}</h3>
@@ -58,9 +44,8 @@ export const BlogPostCard = ({ post, onEdit }: BlogPostProps) => {
       
       <p className="text-gray-700 mb-4 leading-relaxed">{post.content}</p>
       
-      <div className="flex gap-2 pt-4 border-t border-gray-200">
+      <div className="flex gap-2 pt-4">
         <button
-          onClick={() => onEdit(post)}
           className="flex items-center gap-1 px-4 py-2 bg-blue-50 text-blue-700 rounded-md hover:bg-blue-100 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -69,7 +54,6 @@ export const BlogPostCard = ({ post, onEdit }: BlogPostProps) => {
           Edit
         </button>
         <button
-          onClick={() => setShowDeleteConfirm(true)}
           className="flex items-center gap-1 px-4 py-2 bg-red-50 text-red-700 rounded-md hover:bg-red-100 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,32 +63,8 @@ export const BlogPostCard = ({ post, onEdit }: BlogPostProps) => {
         </button>
       </div>
 
-      {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Confirm Delete</h3>
-            <p className="text-gray-700 mb-6">
-              Are you sure you want to delete "<strong>{post.title}</strong>"? This action cannot be undone.
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={handleDelete}
-                disabled={isDeleting}
-                className="flex-1 bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 disabled:bg-red-300 disabled:cursor-not-allowed transition-colors"
-              >
-                {isDeleting ? 'Deleting...' : 'Delete'}
-              </button>
-              <button
-                onClick={() => setShowDeleteConfirm(false)}
-                disabled={isDeleting}
-                className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors"
-              >
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+       
+      
     </article>
   );
 };

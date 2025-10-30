@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import type { BlogPost } from "../types/BlogPost";
-import { BlogPostCard } from "../components/BlogPostCard";
+import { BlogPostCard } from "./BlogPostCard";
 
-const BlogManager: React.FC = () => {
+const BlogList: React.FC = () => {
   const initialPosts: BlogPost[] = [
     {
       id: "1",
@@ -57,8 +57,7 @@ const BlogManager: React.FC = () => {
  
 
   return (
-    <div className="max-w-3xl mx-auto mt-10">
-      <h1 className="text-4xl font-bold mb-6 text-center">Blog Post Manager</h1>
+    <div className="">
 
       {/* <BlogPostForm onSubmit={addPost} /> */}
 
@@ -75,4 +74,4 @@ const BlogManager: React.FC = () => {
   );
 };
 
-export default BlogManager;
+export default BlogList;
