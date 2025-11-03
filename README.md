@@ -1,73 +1,104 @@
-# React + TypeScript + Vite
+Blog Post Management System
+A modern, full-featured blog post management application built with React, TypeScript, and Tailwind CSS. This application demonstrates CRUD operations, search and filter functionality, form validation, and proper error handling.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Features
+CRUD Operations: Create, read, update, and delete blog posts
+Search Functionality: Search posts by title or content in real-time
+Category Filtering: Filter posts by category with dynamic category generation
+Combined Filters: Use search and category filter together for refined results
+Form Validation: Client-side validation with helpful error messages
+Loading States: Visual feedback during API operations
+Empty States: Clear messaging when no posts or no results found
+Responsive Design: Mobile-first design that works on all screen sizes
+Delete Confirmation: Confirmation dialog before deleting posts
+Type Safety: Full TypeScript implementation for type safety
+🛠️ Technologies Used
+React 18
+TypeScript
+Tailwind CSS
+Vite
+JSONPlaceholder - Fake REST API for testing and prototyping
+📋 Prerequisites
+Before you begin, ensure you have the following installed:
 
-Currently, two official plugins are available:
+Node.js (version 16 or higher)
+npm or yarn package manager
+🔧 Installation & Setup
+Clone the repository
+   git clone git@github.com:murtadhoaaishah/blog_manager.git
+   cd blog-post-manager
+Install dependencies
+   npm install
+Start the development server
+   npm run dev
+Open your browser Navigate to http://localhost:5173 (or the port shown in your terminal)
+📁 Project Structure
+src/
+├── components/
+│   ├── BlogForm.tsx          # Form component for creating/editing posts
+│   ├── BlogList.tsx          # List container component
+│   └── BlogPostCard.tsx      # Individual post card component
+├── services/
+│   └── blog.service.ts                # API service layer for all HTTP requests
+├── types/
+│   └── BlogPost.ts           # TypeScript type definitions
+├── App.tsx                   # Main application component
+└── main.tsx                  # Application entry point
+Architecture & Design Decisions
+Component Structure
+Separation of Concerns: Components are separated by functionality (forms, lists, cards)
+Props Interface: Clear TypeScript interfaces for all component props
+State Management
+React Hooks: All state is managed locally in the main App component
+API Integration
+Service Layer: Abstracted API calls into a separate service layer
+JSONPlaceholder: Using JSONPlaceholder as the mock API
+Important Note: JSONPlaceholder is a fake API - POST/PUT/DELETE operations appear to work but don't persist on the server. The application manages state locally after API calls to simulate persistence.
+Form Validation
+Client-side Validation: Built-in validation for all form fields
+Real-time Feedback: Error messages displayed immediately
+Validation Rules:
+Title: Required, minimum 5 characters
+Content: Required, minimum 20 characters
+Author: Required
+Category: Required
+Search & Filter Implementation
+Case-insensitive Search: Search works on both title and content fields
+Dynamic Categories: Categories are automatically extracted from posts
+Combined Filtering: Search and category filter work together
+Performance: Uses useMemo to prevent unnecessary recalculations
+Error Handling
+Try-Catch Blocks: All async operations wrapped in error handling
+User Feedback: Clear error messages with retry options
+Loading States: Visual indicators during API calls
+🎨 UI/UX Features
+Responsive Design: Works seamlessly on mobile, tablet, and desktop
+Loading Spinners: Visual feedback during data fetching
+Empty States: Helpful messages when no data is available
+Hover Effects: Interactive elements have clear hover states
+Focus States: Proper focus indicators for accessibility
+Color Coding: Different colors for edit (blue) and delete (red) actions
+🔍 Key Features Explained
+Search Functionality
+The search feature filters posts in real-time as you type, searching through both the title and content of posts. The search is case-insensitive for better user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Category Filter
+Categories are dynamically generated from the posts. Users can filter by a specific category or view all posts. The filter works in combination with the search feature.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+CRUD Operations
+Create: Click "Create New Post" button, fill in the form, and submit
+Read: All posts are displayed on the main page
+Update: Click "Edit" button on any post card, modify the details, and submit
+Delete: Click "Delete" button and confirm the action in the dialog
+🧪 Testing the Application
+Manual Testing Steps
+View Posts: On load, verify posts are fetched and displayed
+Create Post: Click "Create New Post" and submit the form
+Edit Post: Click "Edit" on a post, modify it, and save
+Delete Post: Click "Delete" on a post and confirm
+Search: Type in the search box and verify filtering
+Category Filter: Select a category from the dropdown
+Combined Filter: Use search and category filter together
+Error Handling: Disconnect internet and try operations
+Validation: Try submitting empty or invalid form data
+Responsive: Test on different screen sizes
