@@ -5,7 +5,7 @@
 
 A modern, full-featured blog post management application built with React, TypeScript, and Tailwind CSS. This application demonstrates CRUD operations, search and filter functionality, form validation, and proper error handling.
 
-## 🚀 Features
+##  Features
 
 - **CRUD Operations**: Create, read, update, and delete blog posts
 - **Search Functionality**: Search posts by title or content in real-time
@@ -18,7 +18,7 @@ A modern, full-featured blog post management application built with React, TypeS
 - **Delete Confirmation**: Confirmation dialog before deleting posts
 - **Type Safety**: Full TypeScript implementation for type safety
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **React 18**
 - **TypeScript**
@@ -26,14 +26,17 @@ A modern, full-featured blog post management application built with React, TypeS
 - **Vite**
 - **JSONPlaceholder** - Fake REST API for testing and prototyping
 
-## 📋 Prerequisites
 
-Before you begin, ensure you have the following installed:
+## Preeview here
 
-- Node.js (version 16 or higher)
-- npm or yarn package manager
+[Go Live](https://blog-manager-wheat.vercel.app/)
 
-## 🔧 Installation & Setup
+![screenshot](/public/vectors/Screenshot%20(2).png)
+![screenshot](/public/vectors/Screenshot%20(3).png)
+
+
+
+##  Installation & Setup
 
 1. **Clone the repository**
 
@@ -57,7 +60,7 @@ Before you begin, ensure you have the following installed:
 4. **Open your browser**
    Navigate to `http://localhost:5173` (or the port shown in your terminal)
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 src/
@@ -113,7 +116,7 @@ src/
 - **User Feedback**: Clear error messages with retry options
 - **Loading States**: Visual indicators during API calls
 
-## 🎨 UI/UX Features
+##  UI/UX Features
 
 - **Responsive Design**: Works seamlessly on mobile, tablet, and desktop
 - **Loading Spinners**: Visual feedback during data fetching
@@ -139,7 +142,7 @@ Categories are dynamically generated from the posts. Users can filter by a speci
 - **Update**: Click "Edit" button on any post card, modify the details, and submit
 - **Delete**: Click "Delete" button and confirm the action in the dialog
 
-## 🧪 Testing the Application
+##  Testing the Application
 
 ### Manual Testing Steps
 
@@ -154,7 +157,6 @@ Categories are dynamically generated from the posts. Users can filter by a speci
 9. **Validation**: Try submitting empty or invalid form data
 10. **Responsive**: Test on different screen sizes
 
-## Author
 
 ---
 
